@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Atlas Book Hub — Orders</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Lightweight page-specific tweaks (won't override your main styles) */
+    .orders-page { max-width: 980px; margin: 28px auto; padding: 0 16px; }
+    .orders-page h2 { margin-bottom: 12px; font-size: 22px; }
+    .order-card { padding: 14px; border-radius: 10px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+    .order-card .muted { color: var(--muted); font-size: 13px; }
+    .order-actions { margin-top: 12px; display:flex; gap:8px; }
+    /* Buttons if not present in your CSS */
+    .btn { padding:8px 12px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer; }
+    .btn-primary { background:#0066ff; color:#fff; border-color:#0066ff; }
+    .btn-ghost { background:transparent; border:1px solid #ddd; }
+    .no-orders-box { text-align:center; padding:28px; color:var(--text-light); background:#fbfcff; border-radius:8px; border:1px solid #eef; }
+  </style>
+</head>
+<body>
+  <header class="site-header" style="padding:12px 16px; border-bottom:1px solid #eee; background:#fff;">
+    <div style="max-width:980px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
+      <a href="index.html" style="text-decoration:none; color:inherit;"><h1 style="font-size:18px; margin:0;">Atlas Book Hub</h1></a>
+      <nav>
+        <a href="catalogue.html" class="btn" style="margin-right:8px;">Catalogue</a>
+        <a href="cart.html" class="btn">Cart (<span id="cart-count-top">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="orders-page">
+    <h2>Your Orders</h2>
+
+    <!-- shown when there are no orders -->
+    <div id="no-orders" class="no-orders-box" style="display:none;">
+      <p style="margin:0 0 12px 0;">No orders yet. Your confirmed orders will appear here.</p>
+      <a href="catalogue.html" class="btn btn-primary">Browse Books</a>
+    </div>
+
+    <!-- container where JS will inject order cards -->
+    <div id="orders-list" style="margin-top:16px; display:grid; gap:12px;"></div>
+  </main>
+
+  <footer style="padding:18px 0; margin-top:36px; border-top:1px solid #f0f0f0; background:#fff;">
+    <div style="max-width:980px; margin:0 auto; text-align:center; color:var(--text-light); font-size:13px;">
+      © Atlas Book Hub
+    </div>
+  </footer>
+
+  <!-- Load app JS after DOM so renderOrderWithActions can find DOM elements -->
+  <script src="app.js"></script>
+</body>
+</html>

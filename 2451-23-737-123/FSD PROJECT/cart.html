@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Review and checkout your book selections" />
+  <title>Atlas Book Hub — Shopping Cart | Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="top-frame">
+    <div class="top-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <rect rx="8" width="48" height="48" fill="#0066ff" />
+        <path fill="white" d="M14 12h20v24H14zm2 2v20h16V14z" />
+      </svg>
+      <div class="site-title">
+        <div class="name">Atlas Book Hub</div>
+        <div class="subtitle">Educational Excellence Through Knowledge</div>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="order-history.html">Orders</a>
+      <a href="auth.html">Logout</a>
+      <a href="cart.html" class="cart-link">Cart <span id="cart-count-top" class="badge">0</span></a>
+      <span id="currency-display" style="margin-left: 20px; font-size: 12px; color: var(--muted);">Loading...</span>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="page">
+    <h2>Shopping Cart</h2>
+    <p class="section-desc">Review your selected books and proceed to checkout</p>
+
+    <!-- Cart Table -->
+    <div class="table-container">
+      <table class="cart-table" id="cartTable">
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Book Title</th>
+            <th style="text-align: center;">Unit Price</th>
+            <th style="text-align: center;">Quantity</th>
+            <th style="text-align: center;">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div id="empty-cart" style="text-align: center; padding: 40px 20px;">
+      <p style="color: var(--text-light); margin-bottom: 16px;">Your cart is currently empty</p>
+      <a href="catalogue.html" class="btn btn-primary">Continue Shopping</a>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Subtotal:</span>
+        <span id="subtotal">$0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Tax (10%):</span>
+        <span id="tax">$0.00</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Amount:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      
+      <div class="checkout-actions">
+        <a href="checkout.html" class="btn btn-primary btn-large">Proceed to Checkout</a>
+        <a href="catalogue.html" class="btn btn-ghost btn-large">Continue Shopping</a>
+      </div>
+
+      <div class="cart-info">
+        <p>✓ Free shipping on orders above $50</p>
+        <p>✓ Secure payment processing</p>
+        <p>✓ 7-day money-back guarantee</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h5>About Us</h5>
+        <p>Atlas Book Hub is committed to providing quality educational resources to engineering students.</p>
+      </div>
+      <div class="footer-section">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Contact</h5>
+        <p>Email: orders@atlasbookhub.in<br />Phone: +91-8885-5555</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Atlas Book Hub. All rights reserved.</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Detect user country and currency on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      detectUserCountry();
+      renderCartTable();
+    });
+  </script>
+</body>
+</html>

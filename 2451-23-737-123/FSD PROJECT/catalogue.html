@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse our complete catalogue of engineering textbooks" />
+  <title>Atlas Book Hub — Catalogue | Engineering Textbooks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="top-frame">
+    <div class="top-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <rect rx="8" width="48" height="48" fill="#0066ff" />
+        <path fill="white" d="M14 12h20v24H14zm2 2v20h16V14z" />
+      </svg>
+      <div class="site-title">
+        <div class="name">Atlas Book Hub</div>
+        <div class="subtitle">Educational Excellence Through Knowledge</div>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="catalogue.html" class="active">Catalogue</a>
+      <a href="order-history.html">Orders</a>
+      <a href="auth.html">Logout</a>
+      <a href="cart.html" class="cart-link">Cart <span id="cart-count-top" class="badge">0</span></a>
+      <span id="currency-display" style="margin-left: 20px; font-size: 12px; color: var(--muted);">Loading...</span>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="page">
+    <div class="catalogue-header">
+      <h2>Complete Textbook Catalogue</h2>
+      <p class="section-desc">Explore our extensive collection of engineering textbooks from renowned publishers</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="catalogue-filters">
+      <label for="catFilter">
+        <strong>Filter by Department:</strong>
+        <select id="catFilter">
+          <option value="ALL">All Departments</option>
+          <option value="CSE">Computer Science & Engineering</option>
+          <option value="ECE">Electronics & Communication</option>
+          <option value="EEE">Electrical & Electronics Engineering</option>
+          <option value="CIVIL">Civil Engineering</option>
+        </select>
+      </label>
+      <div class="filter-info">
+        <span id="book-count">Showing all books</span>
+      </div>
+    </div>
+
+    <!-- Catalogue Table -->
+    <div class="table-container">
+      <table class="catalogue-table" id="catalogueTable">
+        <thead>
+          <tr>
+            <th style="width: 80px;">Cover</th>
+            <th style="width: 25%;">Book Title</th>
+            <th style="width: 20%;">Author</th>
+            <th style="width: 20%;">Publisher</th>
+            <th style="width: 12%; text-align: center;">Price</th>
+            <th style="width: 12%; text-align: center;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" style="display: none; text-align: center; padding: 40px 20px; color: var(--text-light);">
+      <p>No books found in this category.</p>
+      <a href="catalogue.html" class="btn btn-ghost" style="margin-top: 16px;">Reset Filter</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h5>About Us</h5>
+        <p>Atlas Book Hub is committed to providing quality educational resources to engineering students.</p>
+      </div>
+      <div class="footer-section">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Contact</h5>
+        <p>Email: info@atlasbookhub.in<br />Phone: +91-8885-5555</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Atlas Book Hub. All rights reserved.</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Detect user country and currency on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      detectUserCountry();
+      renderCatalogueTable();
+      document.getElementById('filter')?.addEventListener('change', (e) => {
+        renderCatalogueTable(e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>

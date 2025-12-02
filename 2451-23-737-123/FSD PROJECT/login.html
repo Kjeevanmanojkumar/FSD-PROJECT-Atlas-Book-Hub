@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login to your Atlas Book Hub account" />
+  <title>Atlas Book Hub — Login | Secure Access</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="top-frame">
+    <div class="top-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <rect rx="8" width="48" height="48" fill="#0066ff" />
+        <path fill="white" d="M14 12h20v24H14zm2 2v20h16V14z" />
+      </svg>
+      <div class="site-title">
+        <div class="name">Atlas Book Hub</div>
+        <div class="subtitle">Educational Excellence Through Knowledge</div>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <a href="auth.html">Back</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="login.html" class="active">Login</a>
+      <a href="cart.html" class="cart-link">Cart <span id="cart-count-top" class="badge">0</span></a>
+      <span id="currency-display" style="margin-left: 20px; font-size: 12px; color: var(--muted);">Loading...</span>
+    </nav>
+  </header>
+
+  <!-- Login Form -->
+  <main class="page login-page">
+    <div class="login-container">
+      <h2>Sign In to Your Account</h2>
+      <p class="section-desc">Access your order history and manage your library account</p>
+
+      <form id="loginForm" method="post" action="login.php" novalidate>
+        <div style="margin-bottom:10px; font-size:13px; color:var(--muted);">
+          Detected location: <span id="login-detected-country">Detecting...</span>
+        </div>
+        <input type="hidden" name="user_country" id="login-user-country" />
+        <label for="email">Email Address</label>
+        <input 
+          id="email"
+          type="email" 
+          name="email" 
+          placeholder="your.email@example.com"
+          required 
+          autocomplete="email"
+        />
+
+        <label for="password">Password</label>
+        <input 
+          id="password"
+          type="password" 
+          name="password" 
+          placeholder="Enter your password"
+          required 
+          autocomplete="current-password"
+        />
+
+        <label>
+          <input type="checkbox" name="remember" />
+          Remember me on this device
+        </label>
+
+        <div class="form-row">
+          <button type="submit" class="btn btn-primary btn-large">Sign In</button>
+        </div>
+
+        <div id="loginMsg" class="muted"></div>
+      </form>
+
+      <div class="auth-divider">
+        <span>New to Atlas Book Hub?</span>
+      </div>
+
+      <a href="register.html" class="btn btn-ghost btn-large" style="width: 100%; text-align: center; margin-top: 12px;">Create Account</a>
+
+      <div class="login-help">
+        <a href="#forgot">Forgot password?</a> | 
+        <a href="index.html">Back to home</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h5>About Us</h5>
+        <p>Atlas Book Hub is committed to providing quality educational resources to engineering students.</p>
+      </div>
+      <div class="footer-section">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Contact</h5>
+        <p>Email: support@atlasbookhub.in<br />Phone: +91-8885-5555</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Atlas Book Hub. All rights reserved.</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Detect user country and currency on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      detectUserCountry();
+      updateLoginLocationDisplay();
+      
+      // Handle login form submission
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const email = document.getElementById('email').value.trim();
+          const password = document.getElementById('password').value.trim();
+          
+          if (!email || !password) {
+            alert('Please fill in all fields');
+            return;
+          }
+          
+          // Simulate successful login
+          setUserAuthenticated();
+          localStorage.setItem('user_email', email);
+          
+          // Save login location
+          localStorage.setItem('login_location', userCountry);
+          
+          // Redirect to home page
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
